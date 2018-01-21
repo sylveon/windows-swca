@@ -1,0 +1,10 @@
+platform:
+  - x86
+  - x64
+install:
+  - ps: Install-Product node 8 $env:platform
+test_script:
+  - npm install
+  - npm run configure
+  - npm run build
+build: off
