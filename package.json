@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "JavaScript bindings for the undocumented SetWindowCompositionAttribute API",
   "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sylveon/windows-swca.git"
@@ -41,5 +42,9 @@
     "esversion": 6,
     "node": true,
     "strict": "global"
+  },
+  "optionalDependencies": {
+    "electron": "^1.7.10",
+    "@types/node": "^9.3.0"
   }
 }
