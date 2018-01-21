@@ -15,7 +15,11 @@
     "blur",
     "fluent"
   ],
-  "author": "Charles Milette",
+  "author": {
+    "name": "Charles Milette",
+    "email": "charles.milette@gmail.com",
+    "url": "https://charlesmilette.net/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sylveon/windows-swca/issues"
