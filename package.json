@@ -1,6 +1,6 @@
 {
   "name": "windows-swca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript bindings for the undocumented SetWindowCompositionAttribute API",
   "main": "lib/index.js",
   "repository": {
