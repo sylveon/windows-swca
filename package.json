@@ -25,9 +25,6 @@
     "url": "https://github.com/sylveon/windows-swca/issues"
   },
   "homepage": "https://github.com/sylveon/windows-swca",
-  "dependencies": {
-    "bindings": "^1.3.0"
-  },
   "devDependencies": {
     "node-gyp": "^3.6.2"
   },
