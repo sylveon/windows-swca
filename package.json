@@ -42,9 +42,5 @@
     "esversion": 6,
     "node": true,
     "strict": "global"
-  },
-  "optionalDependencies": {
-    "electron": "^1.7.10",
-    "@types/node": "^9.3.0"
   }
 }

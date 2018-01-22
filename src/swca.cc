@@ -30,9 +30,9 @@ void swca(const v8::FunctionCallbackInfo<v8::Value>& args)
 		HWND nativeHandle = (HWND)handle;
 
 		ACCENTPOLICY policy = {
-			std::round(args[1]->NumberValue()),
+			(int)std::round(args[1]->NumberValue()),
 			2, // No idea what this means, but it allows to use nColor correctly.
-			std::round(args[2]->NumberValue()),
+			(unsigned int)std::round(args[2]->NumberValue()),
 			0
 		};
 
