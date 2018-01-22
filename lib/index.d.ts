@@ -1,6 +1,5 @@
 /// <reference types='@types/node'/>
 /// <reference types='electron'/>
-import { BrowserWindow } from 'electron';
 
 
 export enum AccentState {
@@ -10,4 +9,4 @@ export enum AccentState {
     ACCENT_ENABLE_FLUENT = 4
 }
 
-export function SetWindowCompositionAttribute(window: Buffer | BrowserWindow, accent: AccentState, color: number): void;
+export function SetWindowCompositionAttribute(window: Buffer | Electron.BrowserWindow, accent: AccentState, color: number): void;

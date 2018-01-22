@@ -26,13 +26,12 @@ void swca(const v8::FunctionCallbackInfo<v8::Value>& args)
 	if (SetWindowCompositionAttribute)
 	{
 		unsigned char* bufferData = (unsigned char*)node::Buffer::Data(args[0].As<v8::Object>());
-		uint32_t handle = *reinterpret_cast<uint32_t*>(bufferData);
-		HWND nativeHandle = (HWND)handle;
+		HWND handle = *reinterpret_cast<HWND*>(bufferData);
 
 		ACCENTPOLICY policy = {
-			(int)std::round(args[1]->NumberValue()),
+			(int)args[1]->NumberValue(),
 			2, // No idea what this means, but it allows to use nColor correctly.
-			(unsigned int)std::round(args[2]->NumberValue()),
+			(unsigned int)args[2]->NumberValue(),
 			0
 		};
 
@@ -42,7 +41,7 @@ void swca(const v8::FunctionCallbackInfo<v8::Value>& args)
 			sizeof(ACCENTPOLICY)
 		};
 
-		returnValue = SetWindowCompositionAttribute(nativeHandle, &data);
+		returnValue = SetWindowCompositionAttribute(handle, &data);
 	}
 
 	args.GetReturnValue().Set(returnValue);
