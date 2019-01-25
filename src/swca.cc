@@ -1,42 +1,28 @@
-#include <cstdint>
-#include <dwmapi.h>
 #include <node.h>
 #include <node_buffer.h>
+#include <windows.h>
 
-struct ACCENTPOLICY
-{
-	int32_t nAccentState;
-	int32_t nFlags;
-	uint32_t nColor;
-	int32_t nAnimationId;
-};
-
-struct WINCOMPATTRDATA
-{
-	int32_t nAttribute;
-	void *pData;
-	uint32_t ulDataSize;
-};
+#include "swcadef.h"
 
 void swca(const v8::FunctionCallbackInfo<v8::Value> &args)
 {
-	typedef BOOL(WINAPI *pSetWindowCompositionAttribute)(HWND, WINCOMPATTRDATA *);
-	static pSetWindowCompositionAttribute SetWindowCompositionAttribute = (pSetWindowCompositionAttribute)GetProcAddress(GetModuleHandle(TEXT("user32.dll")), "SetWindowCompositionAttribute");
+	static const auto SetWindowCompositionAttribute =
+		(PFN_SET_WINDOW_COMPOSITION_ATTRIBUTE)GetProcAddress(GetModuleHandle(TEXT("user32.dll")), "SetWindowCompositionAttribute");
 	bool returnValue = false;
 
 	if (SetWindowCompositionAttribute)
 	{
 		HWND handle = *reinterpret_cast<HWND *>(node::Buffer::Data(args[0].As<v8::Object>()));
 
-		ACCENTPOLICY policy = {
-			static_cast<int32_t>(args[1]->NumberValue()),
-			2, // No idea what this means, but it allows to use nColor correctly.
-			static_cast<uint32_t>(args[2]->NumberValue()),
+		ACCENT_POLICY policy = {
+			static_cast<ACCENT_STATE>(static_cast<INT>(args[1]->NumberValue())),
+			2,
+			static_cast<COLORREF>(args[2]->NumberValue()),
 			0
 		};
 
-		WINCOMPATTRDATA data = {
-			19, // WCA_ACCENT_POLICY
+		const WINDOWCOMPOSITIONATTRIBDATA data = {
+			WCA_ACCENT_POLICY,
 			&policy,
 			sizeof(policy)
 		};

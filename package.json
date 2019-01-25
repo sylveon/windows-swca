@@ -1,9 +1,9 @@
 {
   "name": "windows-swca",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "JavaScript bindings for the undocumented SetWindowCompositionAttribute API",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sylveon/windows-swca.git"
@@ -14,11 +14,12 @@
     "native",
     "transparency",
     "blur",
-    "fluent"
+    "fluent",
+    "acrylic"
   ],
   "author": {
     "name": "Charles Milette",
-    "email": "charles.milette@gmail.com",
+    "email": "me@charlesmilette.net",
     "url": "https://charlesmilette.net/"
   },
   "license": "MIT",
@@ -26,21 +27,18 @@
     "url": "https://github.com/sylveon/windows-swca/issues"
   },
   "homepage": "https://github.com/sylveon/windows-swca",
+  "dependencies": {
+    "@types/node": "^10.12.18"
+  },
   "devDependencies": {
-    "node-gyp": "^3.6.2"
+    "node-gyp": "^3.6.2",
+    "typescript": "^3.2.4"
   },
   "scripts": {
-    "configure": "node-gyp configure",
-    "build": "node-gyp build"
+    "prepublish": "npm run build",
+    "build": "tsc && node-gyp build"
   },
   "os": [
     "win32"
-  ],
-  "jshintConfig": {
-    "curly": true,
-    "eqeqeq": true,
-    "esversion": 6,
-    "node": true,
-    "strict": "global"
-  }
+  ]
 }
