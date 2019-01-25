@@ -35,8 +35,8 @@
     "typescript": "^3.2.4"
   },
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "tsc && node-gyp build"
+    "prepare": "tsc",
+    "build": "node-gyp build"
   },
   "os": [
     "win32"
