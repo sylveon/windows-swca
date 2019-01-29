@@ -1,4 +1,3 @@
-#include <node.h>
 #include <node_buffer.h>
 #include <windows.h>
 
@@ -15,9 +14,9 @@ void swca(const v8::FunctionCallbackInfo<v8::Value> &args)
 		HWND handle = *reinterpret_cast<HWND *>(node::Buffer::Data(args[0].As<v8::Object>()));
 
 		ACCENT_POLICY policy = {
-			static_cast<ACCENT_STATE>(static_cast<INT>(args[1]->NumberValue())),
+			static_cast<ACCENT_STATE>(args[1].As<v8::Int32>()->Value()),
 			2,
-			static_cast<COLORREF>(args[2]->NumberValue()),
+			args[2].As<v8::Uint32>()->Value(),
 			0
 		};
 
