@@ -48,9 +48,9 @@ export enum ACCENT_STATE {
 
 /**
  * Sets a window's composition attribute
- * @param window The target window.
+ * @param window The target window's native handle.
  * @param accent The desired accent.
- * @param color The background color in 0xRRGGBBAA
+ * @param color The background color in 0xRRGGBBAA.
  */
 export function SetWindowCompositionAttribute(window: Buffer, accent: ACCENT_STATE, color: number) {
     // SetWindowCompositionAttribute expects the color it in AABBGGRR, so let's bitshift to it from RRGGBBAA.
